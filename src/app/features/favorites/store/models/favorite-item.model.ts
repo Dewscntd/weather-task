@@ -1,8 +1,8 @@
 export interface FavoriteItem {
     id: string
     cityName: string,
-    currentData: {},
-    forecast:{} 
+    currentData: object,
+    forecast:object, 
     isFavorite?: boolean,
 }
 

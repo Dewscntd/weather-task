@@ -1,26 +1,33 @@
 .card{
     width: 20rem;
     @media (min-width: 576px) { 
-        width: 30rem;
+        width: 13rem;
+        height: 10rem;
     }
     .card-body{
         display: flex;
         flex-flow: column;
         align-items: center;
+        @media (min-width: 576px) { 
+            justify-content: space-evenly;
+        }
+
         .card-title, .card-subtitle, .card-text{
             @media (min-width: 576px) { 
-                font-size: 1.4rem;
-                font-weight: bold;
+                font-size: 1.1rem;
             }     
         }
         .fav-buttons {
             width: 100%;
             display: flex;
-            justify-content: space-between;
+            justify-content: space-evenly;
+            @media (min-width: 576px) { 
+                justify-content: space-between;
+            }
             .btn{
-                font-size: 1rem;
+                font-size: 0.75rem;
                 @media (min-width: 576px) { 
-                    font-size: 1.2rem;
+                    font-size: 0.75rem;
                 }
             }
         }

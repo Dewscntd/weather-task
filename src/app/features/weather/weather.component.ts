@@ -1,3 +1,4 @@
+import { Weather } from './models/weather.model';
 import { Store } from '@ngrx/store';
 import { AccuweatherService } from './../../accuweather.service';
 import { ActivatedRoute } from '@angular/router';
@@ -15,18 +16,18 @@ import { v4 as uuid} from 'uuid'
   styleUrls: ['./weather.component.scss']
 })
 export class WeatherComponent implements OnInit {
-
 results$: Observable<any>
 isFavorite = false;
 currentData;
 forecast;
 cityName;
+errorMsg;
 
 
 searchForm: FormGroup = new FormGroup({
   cityInput: new FormControl('',[
     Validators.required,
-    Validators.pattern(/^[a-z]+[A-Z]*$/)
+    Validators.pattern(/^[a-zA-Z\s]*$/)
   ])
 })
   constructor(
@@ -36,45 +37,47 @@ searchForm: FormGroup = new FormGroup({
      ) { }
 
   ngOnInit() {
-      const coords = this.awService.getLocationPositionPromise().then(
-       position => {
-         const { latitude: lat, longitude: lon} = position.coords
-         return {
-           latitude: lat,
-           longitude: lon
-         }
-       }
-     )
-     this.awService.geMocktGeolocationKey()
-     .pipe(
-       tap( cityDetail => this.cityName = cityDetail.LocalizedName),
-       switchMap( cityDetails => {
-         return forkJoin(
-          this.awService.getMockCurrentCondition(cityDetails.Key),
-          this.awService.getMockForecast(cityDetails.Key)
-         )
-       }),
-     ).subscribe(([currentData,dailyForecasts]) => {
-      this.currentData = currentData[0],
-      this.forecast = dailyForecasts.DailyForecasts
-    })
+    //   const coords = this.awService.getLocationPositionPromise().then(
+    //    position => {
+    //      const { latitude: lat, longitude: lon} = position.coords
+    //      return {
+    //        latitude: lat,
+    //        longitude: lon
+    //      }
+    //    }
+    //  )
+    //  this.awService.geMocktGeolocationKey()
+    //  .pipe(
+    //    tap( cityDetail => this.cityName = cityDetail.LocalizedName),
+    //    switchMap( cityDetails => {
+    //      return forkJoin(
+    //       this.awService.getMockCurrentCondition(cityDetails.Key),
+    //       this.awService.getMockForecast(cityDetails.Key)
+    //      )
+    //    }),
+    //  ).subscribe(([currentData,dailyForecasts]) => {
+    //   this.currentData = currentData[0],
+    //   this.forecast = dailyForecasts.DailyForecasts
+    // })
   }
 
-  onSubmit(){
+  onSubmit(searchForm: FormGroup){
     if(this.searchForm.valid){
-      this.awService.getMockAutoComplete()
+      this.awService.getCityKey(this.searchForm.value.cityInput)
       .pipe(
         tap(cityDetails => this.cityName = cityDetails[0].LocalizedName),
         switchMap( cityDetails => {
           return forkJoin(
-              this.awService.getMockCurrentCondition(cityDetails[0].Key),
-              this.awService.getMockForecast(cityDetails[0].Key)
+              this.awService.getCurrentCondition(cityDetails[0].Key),
+              this.awService.getFiveDaysForecast(cityDetails[0].Key)
           )
         })
       ).subscribe(([currentData,dailyForecasts]) => {
         this.currentData = currentData[0],
         this.forecast = dailyForecasts.DailyForecasts
-      })
+      }, (err) => {
+        this.errorMsg = err
+      });
       this.searchForm.reset();
     }
   }
@@ -92,3 +95,35 @@ searchForm: FormGroup = new FormGroup({
 
 
  }
+
+
+
+
+
+
+
+
+
+
+
+
+//  onSubmit(){
+//   if(this.searchForm.valid){
+//     this.awService.getMockAutoComplete()
+//     .pipe(
+//       tap(cityDetails => this.cityName = cityDetails[0].LocalizedName),
+//       switchMap( cityDetails => {
+//         return forkJoin(
+//             this.awService.getMockCurrentCondition(cityDetails[0].Key),
+//             this.awService.getMockForecast(cityDetails[0].Key)
+//         )
+//       })
+//     ).subscribe(([currentData,dailyForecasts]) => {
+//       this.currentData = currentData[0],
+//       this.forecast = dailyForecasts.DailyForecasts
+//     }, (err) => {
+//       this.errorMsg = err
+//     });
+//     this.searchForm.reset();
+//   }
+// }

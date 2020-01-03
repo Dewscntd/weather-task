@@ -1,3 +1,8 @@
+<section class="error-msg" *ngIf="errorMsg">
+  <div class="alert alert-danger" role="alert">
+    {{errorMsg}}
+  </div>
+</section>
 <div class="weather-template">
   <section class="search-form">
     <form class="form-inline" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
@@ -12,8 +17,8 @@
       <button type="submit" class="btn btn-primary" [disabled]="!searchForm.valid">Search</button>
     </form>
   </section> 
-  <div class="weather-display">
-    <section class="current-weather" *ngIf="currentData">
+  <div class="weather-display" *ngIf="currentData">
+    <section class="current-weather">
       <div class="media">
         <img
           src='https://developer.accuweather.com/sites/default/files/{{currentData.WeatherIcon}}-s.png'

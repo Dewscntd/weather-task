@@ -2,6 +2,10 @@
     display: flex;
     flex-flow: column;
     align-items: center;
+    @media (min-width: 576px) { 
+        flex-flow: row wrap;
+        justify-content: center;
+    }
     .favorites-item{
         padding: 1rem 0;
         @media (min-width: 576px) { 
