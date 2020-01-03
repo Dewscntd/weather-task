@@ -4,7 +4,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { of, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import {environment} from '../environments/environment';
+import { environment } from '../environments/environment';
 import { AutocompleteApi } from './features/weather/models/autocomplete-api.model';
 import { FiveDaysForecast } from './features/weather/models/five-day-forecast.model';
 

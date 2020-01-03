@@ -5,7 +5,7 @@
 </section>
 <div class="weather-template">
   <section class="search-form">
-    <form class="form-inline" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+    <form class="form-inline" [formGroup]="searchForm" (ngSubmit)="onSubmit(searchForm)">
       <div class="form-group">
         <input
           type="text"
