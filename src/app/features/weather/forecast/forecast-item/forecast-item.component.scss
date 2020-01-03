@@ -1,0 +1,13 @@
+.card{
+    display: flex;
+    margin: 0.2rem;
+    align-items: center;
+    @media (min-width: 576px) { 
+        margin: 0rem; 
+    }
+    .card-body{
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+    }
+}

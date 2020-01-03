@@ -1,0 +1,8 @@
+    <div  class="forecast">
+        <app-forecast-item *ngFor="let day of fiveDaysForecst"
+            [date]="day.Date" 
+            [minTemp] = "day.Temperature.Minimum.Value"
+            [maxTemp] = "day.Temperature.Maximum.Value"
+            >
+        </app-forecast-item>
+    </div>

@@ -1,0 +1,42 @@
+.weather-template{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    margin: 1rem;
+    @media (min-width: 576px) { 
+        margin: 0.6rem; 
+    }
+    .search-form{
+        display: flex;
+        padding: 3rem 0;
+            button{
+                margin: 0 0.6rem;
+                align-self: baseline;
+        }
+    }
+    .weather-display{
+        box-shadow: -1px 0px 3px 1px #ccc;
+        border-radius: 5px;
+        padding: 0.5rem;
+        width: 100%;
+        .current-weather{
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+            width: 100%;
+            padding:1rem 0.4rem;
+            @media (min-width: 576px) { 
+                padding:4rem 0.4rem;
+             }
+             button{
+                 font-size: 0.75rem;
+                 @media (min-width: 576px) { 
+                    font-size: 1rem;
+                 }
+             }
+        }
+        .forecast-cont{
+            width: 100%;
+        }
+    }
+}

@@ -1,0 +1,9 @@
+.forecast{
+    display: flex;
+    flex-flow: column;
+    @media (min-width: 576px) { 
+        flex-flow: row wrap;
+        justify-content: space-evenly;
+ 
+    }
+}

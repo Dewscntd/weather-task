@@ -1,0 +1,11 @@
+<div class="card">
+    <div class="card-body">
+      <h5 class="card-title">{{favoriteData.cityName}}</h5>
+      <h6 class="card-subtitle">{{favoriteData.currentData.Temperature.Metric.Value}}</h6>
+      <p class="card-text">{{favoriteData.currentData.WeatherText}}</p>
+      <div class="fav-buttons">
+        <button type="button" class="btn btn-outline-danger" (click)="deleteItem(favoriteData.id)">Delete</button>
+        <a [routerLink]="" class="btn btn-outline-info" role="button">More Details</a>
+      </div>
+    </div>
+  </div>

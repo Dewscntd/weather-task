@@ -1,0 +1,11 @@
+.favorites-comp{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    .favorites-item{
+        padding: 1rem 0;
+        @media (min-width: 576px) { 
+            padding: 1rem 0.5rem;
+        }
+    }
+}

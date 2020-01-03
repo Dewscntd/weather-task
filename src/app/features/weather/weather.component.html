@@ -1,0 +1,51 @@
+<div class="weather-template">
+  <section class="search-form">
+    <form class="form-inline" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter City Name"
+          formControlName="cityInput"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!searchForm.valid">Search</button>
+    </form>
+  </section> 
+  <div class="weather-display">
+    <section class="current-weather" *ngIf="currentData">
+      <div class="media">
+        <img
+          src='https://developer.accuweather.com/sites/default/files/{{currentData.WeatherIcon}}-s.png'
+          alt="..."
+        />
+        <div class="media-body">
+          <h5>{{cityName}}</h5>
+          <p>{{currentData.Temperature.Metric.Value}}&deg;C</p>
+        </div>
+      </div>
+      <div class="add-favorite-button">
+        <img
+          src="../../../assets/icons/heart-fill.svg"
+          alt="not in Favorites"
+          width="32"
+          height="32"
+          title="in Favorites"
+          *ngIf="isFavorite"
+        />
+        <img
+          src="../../../assets/icons/heart.svg"
+          alt="not in Favorites"
+          width="32"
+          height="32"
+          title="not in Favorites"
+          *ngIf="!isFavorite"
+        />
+        <button class="btn btn-outline-success" (click)="addToFavorites()" [disabled]="isFavorite">Add To Favorites</button>
+      </div>
+  </section> 
+  <section class="forecast-cont">
+      <app-forecast [fiveDaysForecst]="forecast"></app-forecast>
+  </section> 
+  </div> 
+</div>
