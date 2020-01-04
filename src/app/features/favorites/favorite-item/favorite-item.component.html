@@ -5,7 +5,7 @@
       <p class="card-text">{{favoriteData.currentData.WeatherText}}</p>
       <div class="fav-buttons">
         <button type="button" class="btn btn-outline-danger" (click)="deleteItem(favoriteData.id)">Delete</button>
-        <a [routerLink]="" class="btn btn-outline-info" role="button">More Details</a>
+        <a class="btn btn-outline-info" role="button" [routerLink]="['/weather',favoriteData.cityName]">More Details</a>
       </div>
     </div>
   </div>

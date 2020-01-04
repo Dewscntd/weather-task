@@ -1,6 +1,6 @@
 
 <div class="favorites-comp" *ngIf="faivorites$ | async as faivorites">
-    <div class="favorites-item" *ngFor="let faivorite of faivorites ">
+    <div class="favorites-item" *ngFor="let faivorite of faivorites "@fade>
         <app-favorite-item [favoriteData]="faivorite"></app-favorite-item>
     </div>
   </div>

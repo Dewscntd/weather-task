@@ -2,10 +2,13 @@
     <a class="navbar-brand">Harolo-WAP</a>
     <ul class="nav justify-content-end">
 
-        <li class="nav-item" routerLinkActive="active current">
-          <a class="nav-link" [routerLink]="['']">Current Weather</a>
+        <li class="nav-item" 
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}"
+        >
+          <a class="nav-link" [routerLink]="['/weather']">Current Weather</a>
         </li>
-        <li class="nav-item" routerLinkActive="active current" >
+        <li class="nav-item" routerLinkActive="active" >
           <a class="nav-link" [routerLink]="['/favorites']">Favorites</a>
         </li>
       </ul>

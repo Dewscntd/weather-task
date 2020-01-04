@@ -1,5 +1,5 @@
     <div  class="forecast">
-        <app-forecast-item *ngFor="let day of fiveDaysForecst"
+        <app-forecast-item *ngFor="let day of fiveDaysForecst" @fade
             [date]="day.Date" 
             [minTemp] = "day.Temperature.Minimum.Value"
             [maxTemp] = "day.Temperature.Maximum.Value"

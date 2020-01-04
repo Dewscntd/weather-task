@@ -1,7 +1,6 @@
-import { Weather } from './models/weather.model';
 import { Store } from '@ngrx/store';
 import { AccuweatherService } from './../../accuweather.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Observable, forkJoin, from } from 'rxjs';
@@ -37,28 +36,31 @@ searchForm: FormGroup = new FormGroup({
      ) { }
 
   ngOnInit() {
-    //   const coords = this.awService.getLocationPositionPromise().then(
-    //    position => {
-    //      const { latitude: lat, longitude: lon} = position.coords
-    //      return {
-    //        latitude: lat,
-    //        longitude: lon
-    //      }
-    //    }
-    //  )
-    //  this.awService.geMocktGeolocationKey()
-    //  .pipe(
-    //    tap( cityDetail => this.cityName = cityDetail.LocalizedName),
-    //    switchMap( cityDetails => {
-    //      return forkJoin(
-    //       this.awService.getMockCurrentCondition(cityDetails.Key),
-    //       this.awService.getMockForecast(cityDetails.Key)
-    //      )
-    //    }),
-    //  ).subscribe(([currentData,dailyForecasts]) => {
-    //   this.currentData = currentData[0],
-    //   this.forecast = dailyForecasts.DailyForecasts
-    // })
+    if(this.route.snapshot.paramMap){
+      console.log(this.route.snapshot.paramMap.get('cityName'))
+    }
+      const coords = this.awService.getLocationPositionPromise().then(
+        position => {
+          const { latitude: lat, longitude: lon} = position.coords
+          return {
+            latitude: lat,
+            longitude: lon
+          }
+        }
+      )
+      this.awService.geMocktGeolocationKey()
+      .pipe(
+        tap( cityDetail => this.cityName = cityDetail.LocalizedName),
+        switchMap( cityDetails => {
+          return forkJoin(
+           this.awService.getMockCurrentCondition(cityDetails.Key),
+           this.awService.getMockForecast(cityDetails.Key)
+          )
+        }),
+      ).subscribe(([currentData,dailyForecasts]) => {
+       this.currentData = currentData[0],
+       this.forecast = dailyForecasts.DailyForecasts
+     })
   }
 
   onSubmit(searchForm: FormGroup){

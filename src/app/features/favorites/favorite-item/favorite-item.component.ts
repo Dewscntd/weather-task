@@ -23,8 +23,8 @@ export class FavoriteItemComponent implements OnInit {
   deleteItem(id: string){
     this.store.dispatch( new DeleteFavoriteAction(id))
   }
-  goToWeather(favoriteData){
-    this.router.navigate(['/', { fromFavoriteItem: favoriteData}])
+  goToWeahterDetails(favoriteCityName){
+    // this.router.navigate(['/weather'], {cityName: favoriteCityName})
   }
 
 }
