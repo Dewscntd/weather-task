@@ -40,7 +40,7 @@ searchForm: FormGroup = new FormGroup({
     if(this.route.snapshot.params.cityName){
       this.getWeatherByCityName(this.route.snapshot.params.cityName);
     } else {
-      this.getWeatherByCityName('Tel-Aviv');
+      // this.getWeatherByCityName('Tel-Aviv');
     }
   }
 
@@ -96,35 +96,3 @@ searchForm: FormGroup = new FormGroup({
   }
 
  }
-
-
-
-
-
-
-
-
-
-
-
-
-//  onSubmit(){
-//   if(this.searchForm.valid){
-//     this.awService.getMockAutoComplete()
-//     .pipe(
-//       tap(cityDetails => this.cityName = cityDetails[0].LocalizedName),
-//       switchMap( cityDetails => {
-//         return forkJoin(
-//             this.awService.getMockCurrentCondition(cityDetails[0].Key),
-//             this.awService.getMockForecast(cityDetails[0].Key)
-//         )
-//       })
-//     ).subscribe(([currentData,dailyForecasts]) => {
-//       this.currentData = currentData[0],
-//       this.forecast = dailyForecasts.DailyForecasts
-//     }, (err) => {
-//       this.errorMsg = err
-//     });
-//     this.searchForm.reset();
-//   }
-// }

@@ -15,10 +15,10 @@ const API_KEY = `?apikey=${environment.WEATHER_API_KEY}`;
   providedIn: 'root'
 })
 export class AccuweatherService {
-  private readonly AUTO_COMP_URL = `http://dataservice.accuweather.com/locations/v1/cities/autocomplete${API_KEY}`;
-  private readonly CURRENT_CONDITION_URL = `http://dataservice.accuweather.com/currentconditions/v1/`;
-  private readonly GEOLOCATION_URL = `http://dataservice.accuweather.com/locations/v1/cities/geoposition/search${API_KEY}`;
-  private readonly FIVE_DAYS_FORECAST_URL = `http://dataservice.accuweather.com/forecasts/v1/daily/5day/`;
+  private readonly AUTO_COMP_URL = `https://dataservice.accuweather.com/locations/v1/cities/autocomplete${API_KEY}`;
+  private readonly CURRENT_CONDITION_URL = `https://dataservice.accuweather.com/currentconditions/v1/`;
+  private readonly GEOLOCATION_URL = `https://dataservice.accuweather.com/locations/v1/cities/geoposition/search${API_KEY}`;
+  private readonly FIVE_DAYS_FORECAST_URL = `https://dataservice.accuweather.com/forecasts/v1/daily/5day/`;
 
   coords: []
   constructor(private http: HttpClient) { }
