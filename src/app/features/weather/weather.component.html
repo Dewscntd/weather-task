@@ -3,36 +3,37 @@
     {{errorMsg}}
   </div>
 </section>
-<div class="weather-template">
-  <section class="search-form">
-    <form class="form-inline" [formGroup]="searchForm" (ngSubmit)="onSubmit(searchForm)">
-      <div class="form-group">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Enter City Name"
-          formControlName="cityInput"
-        />
-      </div>
-      <button type="submit" class="btn btn-primary" [disabled]="!searchForm.valid">Search</button>
-    </form>
-  </section> 
-  <div class="weather-display" *ngIf="currentData">
+<section class="search-form">
+  <form class="form-inline" [formGroup]="searchForm" (ngSubmit)="onSubmit(searchForm)">
+    <div class="form-group">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter City Name"
+        formControlName="cityInput"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!searchForm.valid">Search</button>
+  </form>
+</section> 
+<div class="weather-template" *ngIf="weather$ | async as weather">
+  <div class="weather-display">
     <section class="current-weather">
       <div class="media">
         <img
-          src='https://developer.accuweather.com/sites/default/files/{{currentData.WeatherIcon}}-s.png'
-          alt="..."
+          src='https://developer.accuweather.com/sites/default/files/{{weather.currentCondition.WeatherIcon}}-s.png'
+          title="{{weather.currentCondition.WeatherText}}"
+          alt="{{weather.currentCondition.WeatherText}}"
         />
         <div class="media-body">
           <h5>{{cityName}}</h5>
-          <p>{{currentData.Temperature.Metric.Value}}&deg;C</p>
+          <p>{{weather.currentCondition.Temperature.Metric.Value}}&deg;C</p>
         </div>
       </div>
       <div class="add-favorite-button">
         <img
           src="../../../assets/icons/heart-fill.svg"
-          alt="not in Favorites"
+          alt="in Favorites"
           width="32"
           height="32"
           title="in Favorites"
@@ -50,7 +51,7 @@
       </div>
   </section> 
   <section class="forecast-cont">
-      <app-forecast [fiveDaysForecst]="forecast"></app-forecast>
+      <app-forecast [fiveDaysForecst]="weather.forecast"></app-forecast>
   </section> 
   </div> 
 </div>

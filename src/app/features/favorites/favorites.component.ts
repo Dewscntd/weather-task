@@ -24,7 +24,7 @@ import { trigger, transition, style, animate } from '@angular/animations';
   ]
 })
 export class FavoritesComponent implements OnInit {
-faivorites$: Observable<Array<FavoriteItem>>    
+faivorites$: Observable<FavoriteItem[]>    
   constructor(private store: Store<FavoritesState>) { }
 
   ngOnInit() {
