@@ -40,7 +40,7 @@ searchForm: FormGroup = new FormGroup({
     if(this.route.snapshot.params.cityName){
       this.getWeatherByCityName(this.route.snapshot.params.cityName);
     } else {
-      // this.getWeatherByCityName('Tel-Aviv');
+      this.getWeatherByCityName('Tel-Aviv');
     }
   }
 
