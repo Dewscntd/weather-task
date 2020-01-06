@@ -27,7 +27,7 @@
         />
         <div class="media-body">
           <h5>{{cityName}}</h5>
-          <p>{{weather.currentCondition.Temperature.Metric.Value}}&deg;C</p>
+          <p>{{weather.currentCondition.Temperature.Metric.Value | fixed}}&deg;C</p>
         </div>
       </div>
       <div class="add-favorite-button">

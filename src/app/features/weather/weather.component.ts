@@ -1,3 +1,5 @@
+import { CurrentCondition } from './models/current-condition.model';
+import { FiveDaysForecast } from './models/five-day-forecast.model';
 import { FavoriteItem } from './../favorites/store/models/favorite-item.model';
 import { Store } from '@ngrx/store';
 import { AccuweatherService } from './../../accuweather.service';
@@ -18,11 +20,10 @@ import { v4 as uuid} from 'uuid'
 export class WeatherComponent implements OnInit {
 weather$: Observable<any>
 isFavorite = false;
-currentData;
-forecast;
+currentData: CurrentCondition;
+forecast: FiveDaysForecast;
 cityName: string;
-errorMsg;
-
+errorMsg: string;
 
 searchForm: FormGroup = new FormGroup({
   cityInput: new FormControl('',[
@@ -30,6 +31,7 @@ searchForm: FormGroup = new FormGroup({
     Validators.pattern(/^[a-zA-Z\s]*$/)
   ])
 })
+
   constructor(
      private awService: AccuweatherService,
      private route: ActivatedRoute,

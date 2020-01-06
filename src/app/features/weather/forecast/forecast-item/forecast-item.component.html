@@ -1,7 +1,7 @@
 <div class="card" @scale>
     <div class="card-body">
       <p class="card-text">{{date | date:'EEE'}}</p>
-      <p class="card-text">{{minTemp}} - {{maxTemp}}</p>
+      <p class="card-text">{{ minTemp |fixed }} - {{ maxTemp |fixed }}</p>
     </div>
   </div>
 

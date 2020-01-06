@@ -15,6 +15,7 @@ import { FavoriteItemComponent } from './features/favorites/favorite-item/favori
 import { FavoritesReducer } from './features/favorites/store/reducers/favorites.reducer';
 import { HeaderComponent } from './header/header.component';
 import { ForecastItemComponent } from './features/weather/forecast/forecast-item/forecast-item.component';
+import { ShortenPipe } from './features/weather/forecast/forecast-item/short-number.pipe';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ForecastItemComponent } from './features/weather/forecast/forecast-item
     FavoritesComponent,
     FavoriteItemComponent,
     HeaderComponent,
-    ForecastItemComponent
+    ForecastItemComponent,
+    ShortenPipe
   ],
   imports: [
     BrowserModule,
